@@ -1,15 +1,27 @@
-status:
-	@docker-compose ps
+serve:
+	@make run cmd="jekyll serve \
+	    --disable-disk-cache \
+        --trace \
+        --incremental \
+        --watch \
+        --unpublished \
+        --future \
+        --port 80 \
+        --host 0.0.0.0"
 
-up:
-	@rm -rf ./.jekyll-cache/
-	@docker-compose up -d --build --remove-orphans
-
-down:
-	@docker-compose down
-
-logs:
-	@docker-compose logs -f
-
-bash:
-	@docker-compose exec blog bash
+run: image = fefas/blog
+run: version = $(shell git rev-parse --short HEAD)
+run: workdir = /usr/local/blog
+run: port ?= 8080
+run:
+	@docker build \
+        -t ${image} \
+        --build-arg WORKDIR=${workdir} \
+        --build-arg VERSION=${version} \
+        .
+	@docker run \
+        -it \
+        --rm \
+        -p ${port}:80 \
+        ${image} \
+        ${cmd}

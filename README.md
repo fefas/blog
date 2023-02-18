@@ -9,7 +9,7 @@ This is the source code of my personal web blog: https://blog.fefas.dev.
 Just run:
 
 ```shell
-$ make up
+$ make serve
 ```
 
 Open `http://localhost:8080` in your favorite browser :)
