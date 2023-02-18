@@ -1,21 +1,19 @@
+build: flags += --trace
+build: flags += --future
+build: flags += $(if $(eq ${CONTEXT},production),--unpublished)
 build:
-	@make run cmd=" \
-        jekyll build \
-            --trace \
-            --future \
-            $(if $(eq ${CONTEXT},production),--unpublished)"
+	@make run cmd="jekyll build ${flags}"
 
+serve: flags += --unpublished
+serve: flags += --future
+serve: flags += --watch
+serve: flags += --incremental
+serve: flags += --disable-disk-cache
+serve: flags += --trace
+serve: flags += --host 0.0.0.0
+serve: flags += --port 80
 serve:
-	@make run bind=y cmd=" \
-        jekyll serve \
-	        --disable-disk-cache \
-            --trace \
-            --incremental \
-            --watch \
-            --unpublished \
-            --future \
-            --port 80 \
-            --host 0.0.0.0"
+	@make run bind=y cmd="jekyll serve ${flags}"
 
 run: image = fefas/blog
 run: version = $(shell git rev-parse --short HEAD)
