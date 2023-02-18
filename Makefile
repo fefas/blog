@@ -7,7 +7,6 @@ build:
 serve: flags += --unpublished
 serve: flags += --future
 serve: flags += --watch
-serve: flags += --incremental
 serve: flags += --disable-disk-cache
 serve: flags += --trace
 serve: flags += --host 0.0.0.0
