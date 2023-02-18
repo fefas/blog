@@ -4,7 +4,6 @@ ARG WORKDIR
 ARG VERSION
 
 WORKDIR $WORKDIR
-ENV VERSION $VERSION
 
 RUN apk add --no-cache \
         make \
@@ -15,17 +14,5 @@ COPY ./src/Gemfile* ./
 RUN bundle install
 COPY ./src ./
 
-CMD jekyll serve \
-        --disable-disk-cache \
-        --trace \
-        --incremental \
-        --watch \
-        --unpublished \
-        --future \
-        --port 80 \
-        --host 0.0.0.0 \
-        --config ./_config.yml \
-        --source ./ \
-        --destination ./_site
-
+ENV VERSION $VERSION
 EXPOSE 80
