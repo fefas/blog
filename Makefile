@@ -18,7 +18,7 @@ serve:
 run: image = fefas/blog
 run: version = $(shell git rev-parse --short HEAD)
 run: workdir = /usr/local/blog
-run: port ?= 8080
+run: port ?= 1403
 run:
 	@docker build \
         -t ${image} \
@@ -29,5 +29,6 @@ run:
         -it \
         --rm \
         $(if ${bind},-p ${port}:80) \
+        -v ${PWD}/src:${workdir} \
         ${image} \
         ${cmd}

@@ -12,7 +12,7 @@ Just run:
 $ make serve
 ```
 
-Open `http://localhost:8080` in your favorite browser :)
+Open `http://localhost:1403` in your favorite browser :)
 
 # License
 
