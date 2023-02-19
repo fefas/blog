@@ -1,5 +1,5 @@
-build: flags += --trace
 build: flags += --future
+build: flags += --trace
 build: flags += $(if $(eq ${CONTEXT},production),--unpublished)
 build:
 	@make run cmd="jekyll build ${flags}"
@@ -7,10 +7,10 @@ build:
 serve: flags += --unpublished
 serve: flags += --future
 serve: flags += --watch
-serve: flags += --disable-disk-cache
 serve: flags += --trace
 serve: flags += --host 0.0.0.0
 serve: flags += --port 80
+serve: flags += --disable-disk-cache
 serve:
 	@make run bind=y cmd="jekyll serve ${flags}"
 
