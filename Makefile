@@ -1,9 +1,3 @@
-build: flags += --future
-build: flags += --trace
-build: flags += $(if $(eq ${CONTEXT},production),--unpublished)
-build:
-	@make run cmd="jekyll build ${flags}"
-
 serve: flags += --unpublished
 serve: flags += --future
 serve: flags += --watch
