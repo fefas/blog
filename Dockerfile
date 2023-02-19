@@ -1,12 +1,18 @@
-FROM ruby:2.3.6
+FROM ruby:3.2.1-alpine3.17
 
-WORKDIR /usr/local/site
-ENV JEKYLL_DESTINATION /var/www
+ARG WORKDIR
+ARG VERSION
 
-COPY ./Gemfile* /usr/local/site/
+WORKDIR $WORKDIR
+
+RUN apk add --no-cache \
+        make \
+        gcc \
+        g++
+
+COPY ./src/Gemfile* ./
 RUN bundle install
-COPY ./ /usr/local/site/
+COPY ./src ./
 
-CMD ["./bin/jekyll-serve"]
-
+ENV VERSION $VERSION
 EXPOSE 80

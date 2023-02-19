@@ -1,9 +1,7 @@
 module Jekyll
   module AssetFilters
     def asset_url(file)
-        raise "Git is not installed" unless isGitInstalled?
-
-      "/assets/#{file}?version=#{gitHash}"
+      "/assets/#{file}?version=#{version}"
     end
 
     def image_url(imageFile)
@@ -23,13 +21,8 @@ module Jekyll
       "![#{imageName}](#{imageUrl})"
     end
 
-    def isGitInstalled?
-      null = RbConfig::CONFIG['host_os'] =~ /msdos|mswin|djgpp|mingw/ ? 'NUL' : '/dev/null'
-      system "git --version >>#{null} 2>&1"
-    end
-
-    def gitHash
-      File.basename(%x{git rev-parse --short HEAD}.strip)
+    def version
+      ENV["VERSION"]
     end
   end
 end
