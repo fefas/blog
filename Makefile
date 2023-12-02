@@ -8,6 +8,9 @@ serve: flags += --disable-disk-cache
 serve:
 	@make run bind=y cmd="jekyll serve ${flags}"
 
+update:
+	@make run cmd="bundle update"
+
 run: image = fefas/blog
 run: version = $(shell git rev-parse --short HEAD)
 run: workdir = /usr/local/blog
