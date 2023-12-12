@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.5)
+    addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     colorator (1.1.0)
     concurrent-ruby (1.2.2)
@@ -57,6 +57,8 @@ GEM
     rexml (3.2.6)
     rouge (4.2.0)
     safe_yaml (1.0.5)
+    sass-embedded (1.69.5-aarch64-linux-gnu)
+      google-protobuf (~> 3.23)
     sass-embedded (1.69.5-aarch64-linux-musl)
       google-protobuf (~> 3.23)
     terminal-table (3.0.2)
@@ -65,6 +67,7 @@ GEM
     webrick (1.8.1)
 
 PLATFORMS
+  aarch64-linux
   aarch64-linux-musl
 
 DEPENDENCIES

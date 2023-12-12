@@ -11,6 +11,9 @@ serve:
 update:
 	@make run cmd="bundle update"
 
+sh:
+	@make run cmd="sh"
+
 run: image = fefas/blog
 run: version = $(shell git rev-parse --short HEAD)
 run: workdir = /usr/local/blog

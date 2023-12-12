@@ -1,11 +1,12 @@
-FROM ruby:3.2.1-alpine3.17
+FROM ruby:3.2.2
 
 ARG WORKDIR
 ARG VERSION
 
 WORKDIR $WORKDIR
 
-RUN apk add --no-cache \
+RUN apt-get update && \
+    apt-get install \
         make \
         gcc \
         g++
