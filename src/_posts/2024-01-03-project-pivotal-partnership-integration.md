@@ -14,41 +14,41 @@ excerpt:
 
 ## Project Goal
 
-Make the company's financing product be offered as a payment option on
-e-commerce checkouts over a partner already widely present on most of the online
-stores as a well-established brand.
+Integrate the company’s financing product as a payment option within e-commerce
+checkouts through a partnership with a well-established brand that already holds
+a widespread presence across numerous online stores.
 
-!! MAKE BETTER
+!! MAKE BETTER !! ADD IMAGE?
 
 ## Context
 
-Due to the partner wide presence in the e-commerce market and its well-known
-brand, the expectations were very high. The partnership promisse was not only an
-immediate access to countless potential customers, the company's maturing
-financing product would also be associate to a brand already trusted by them. A
-failure would be a huge disaster because such project with a major partner was
-one-in-a-lifetime chance for a startup.
+Given its extensive presence and renowned brand in the e-commerce market, the
+partnership not only promised immediate access to a vast customer base but also
+aimed to associate the company's maturing financing product with a trusted
+brand. Failure would have been catastrophic as such an opportunity with a major
+partner was a once-in-a-lifetime chance for a startup.
 
-The project was considered to have both pivotal and strategic high values. Once
-again: expectations were high.
+The project held immense pivotal and strategic value, with expectations set
+remarkably high.
 
-Additionally to that, due to the project characteristic, it would be fall under
-the "e-commerce integration" department which, at that time, had two product
-teams composed around by 8 engineers. They also had been lately known by
-delivery delays and inconsistencies, meaning that the project had relevant value
-as a chance for those teams to rebuild trust.
+Adding to this, the project fell under the escope of the "e-commerce
+integration" department, by then composed of two product teams with around 8
+engineers in total. These teams had recently encountered delivery delays and
+inconsistencies, making a successful accomplishment of this partnership project
+a crucial opportunity to rebuild trust.
 
-And there it was where and when I landed.
+And this is where I stepped in.
 
-I joined as a Senior Software Engineer in of those two teams just some weeks
-before the so waited kickoff. A draft solution was already on the table.
+Joining as a Senior Software Engineer in one of those two teams just weeks
+before the much-anticipated kickoff, I found a draft solution already on the
+table.
 
 
 ## Technical Context
 
-In order to make this partnership happen, the company should provide a public
-HTTP API complying with the partner requested endpoint interfaces. It looked
-like:
+To bring this partnership to life, the company needed to create a public HTTP
+API that complied with the partner's endpoint interfaces specification. It
+looked like:
 
 ```
 POST /start-payment
@@ -57,145 +57,121 @@ GET /autorized-payments/{id}
 ...
 ```
 
-It was a set of around 10 REST-like endpoints with request and response bodies
-well defined. There was also a reponse time limit requirements that we should
-pay attention to. Pretty straight forward, right?
+The entire specification included around 10 REST-like endpoints with clearly
+defined request and response bodies. Additionally, there were strict response
+time limits that required our attention. Pretty straightforward, right?
 
-The company's existing architecture followed a microservices-like style with
-both async and sync communication approaches extensively used. While most of the
-services were respecting the bounded contexts kinda of decently, there were some
-technical concerns that quickly caught my sensers:
+The company's existing architecture followed a microservices-like approach,
+using both asynchronous and synchronous communication methods. While most
+services adhered decently to bounded contexts, a few technical concerns
+immediately caught my attention, but that is another discussion not relevant
+here... let's get back to the project.
 
-1. Reliability and performance issues due to the extensive use of HTTP calls for
-   data query. After talking to few engineers, it was mainly caused by fear of
-   data duplication and the absence of eventual consistency concept.
-
-2. Design flaws visible both on internal code and integration interfaces leading
-   to anemic domain and complex service integrations.
-
-3. No proper infrastructure setup due to an in-house deployment process leading
-   to higher complexity and risk on releases and on new services creation.
-
-4. Not only the database of all services was in a single RDS instance, some
-   services were using read access to tables out of their desiguinated schema.
-   That made rollbacks highly risky because all services would get affected and
-   created highly implicity service coupling.
-
-There were clearly many of the hassles, but not many of the benefits that the
-chosen architecture style could provide.
-
-One could assess that those problems were mainly caused by the absence of
-meaningful application Domain-Driven Design (DDD) and Micro Service Architecture
-principles, but that is another conversation... let's get back to the project.
-
-I mentioned before there was already a draft solution on the table and, as
-expected, it was a new microservices with the purpose of containing the
-partnership mapping data and forwarding calls to the involved services, In other
-words, the solution was anti-corruption layer (ACL) as a microservice between
-the partner client and internal services:
+As mentioned earlier, there was already a preliminary solution in place.
+Predictably, it entailed a new microservice designed to house partnership
+mapping data and redirect calls to the involved services. Essentially, the
+solution acted as an anti-corruption layer (ACL) microservice situated between
+the partner client and our internal services:
 
 {{ 'Proposed Solution' | post_image }}
 
-A futher reason given as justification for a new service creation was
-scalability. The argument was that new service could supposely scale
-independently according to the partner's demand.
+Another justification for creating this new service was scalability. The
+argument presented was that this new service could supposedly scale
+independently based on the partner’s demand.
 
 ## My Contribution 
 
-After understanding the context of the project, the domain of each microservice,
-as well as the use cases present in each of them, getting to know my team mates
-better,  the technical details required to meet the project success, I started
-making questions, and challenging the proposed solution...  I immediately
-realized risks if we were to implement the proposed new service.
+After familiarizing myself with the project's context, understanding each
+microservice's domain, delving into their relevant use cases, getting to know my
+teammates, and absorbing the technical intricacies crucial for project success,
+I began questioning and challenging the proposed solution. It became evident to
+me that implementing the proposed new service posed significant risks.
 
-The main idea came with the fact that every endpoint demanded by the partner was
-already implemented in one of the existing service being one of its
-responsibility the direct integration with common e-commerce checkout
-solutions, like Magento.
+Upon scrutinizing the endpoints demanded by the partner, I noticed an important
+detail. Every required endpoint was already implemented within one existing
+service which held the responsibility of direct integration with common
+e-commerce checkout solutions, such as Magento. There was only one exception: an
+use case required for this project, previously unnecessary for the directly
+integrated e-commerce platforms. Because this new use case was also related to
+e-commerce integration, it could be implemented in this same service.
 
-There was only one exception. One of the required endpoints was a brand new use
-case not needed so far for the directly integrated e-commerces and, therefore,
-an implementation from scratch was required.
+Within my second week at the company, I presented my takes to the team:
 
-Within my second week at the company, I brought my points to the team:
-
-1. A new service for this project would be a mere technical split because there
-   was no meaningful bounded context that could justify such hard codebase and
+1. Creating a new service for this project seemed unnecessary as there wasn't a
+   meaningful bounded context justifying such a segregated codebase and
    deployment isolation.
 
-   There was already a service responsible for e-commerce checkout integrations
-   and everything could be solved by providing the very same use cases over a
-   new port in order to attend this new type of client.
+   The existing service responsible for e-commerce checkout integrations could
+   handle everything by simply providing the same use cases via a new port to
+   accommodate this new client type.
 
-   Furthermore, thanks to the CQS usage to design the use cases of the service,
-   a new port implementation would be pretty much trivial.
+   Leveraging Command Query Separation (CQS) already present in the service
+   would make implementing a new port almost trivial.
 
-2. Scalability would not be solved by the simply creation of a new service. In
-   our case, the existing service would be the bottleneck regardless of a new
-   fast service. Worse than that, the new service would only hurt the response
-   time and reliability due to the addition of one more failure point.
+2. Scalability wouldn't be resolved solely by creating a new service. The
+   existing service would remain the bottleneck regardless of a new, faster
+   service. Moreover, the new service would likely compromise response time and
+   reliability by introducing another potential failure point.
 
-   Additionally, we would be closely working with our partner on the activation
-   of new e-commerce integrations. This further decreased the seek for a
-   premature optmization.
+   Close collaboration with our partner on activating new e-commerce
+   integrations mitigated the urgency for premature optimization.
 
-3. High complexity for the new service setup would greatly consume team
-   resources without bringing any benefit to the project in the aftermath.
+3. The high complexity associated with setting up the new service would heavily
+   drain team resources without commensurate benefits for the project's outcome.
 
-After some discussions, this much simpler solution was agreed and documented.
-The implementation escope was reduced from a new microservice to a set of
-controllers in a module designated to this new type of client and a table to
-match the inner-vs-outer related ids:
+Following discussions, a consensus was reached and documented. With this simpler
+solution, the implementation scope was streamlined from a new microservice to a
+collection of controllers within a designated module catering to this new client
+type, alongside a table to corelate inner-vs-outer related IDs.
 
 {{ 'My Solution' | post_image }}
 
 ## Result
 
-The original deadline of 4 months was totally beaten when we delivered the first
-store integration in 2 months. We suddenly saw ourselves blocked by our partner.
-What was a failure fear, turned into an impressing result echoed to the
-up-management and investors. Now we had proven we were a startup that could
-deliver a product meeting the expectations of a major market player with high
-agility.
+We surpassed the original tough 4-month deadline by delivering the first store
+integration within a remarkable 2 months.  What initially were apprehension of
+failure turned into an impressive outcome that resonated throughout upper
+management and investors. This success affirmed our identity as a startup
+capable of timely delivering a product meeting the expectations of a major
+market player.
 
-The team had the work immensilly recognized during the next quarter meetup and
-we were not known for delays any longer, but for our great achievement could
-pivot our product.
+During the subsequent quarterly meetup, our team received immense recognition
+for our work. We transitioned from being known for delays to celebrate how our
+achievement could pivot pivot the product and company.
 
 ## Learnings
 
-I had many personal takens from this project.  This is the work I have done in
-my recent career path I am most proud of. The reasons are all bellow.
+I had many personal takens from this project. This is the work from my recent
+career path I am most proud of.
 
 This next statement is propably irrelevant for the audience: I do believe I
-nailed this one. While my argumentation skills have much to improve, I naturaly
-had the courage and challenged a solution that I was sure it would have brougth
-much stress and useless work to the team, leading cost increase to the company.
-I stood up and we together could deliver a successful result.
+nailed this one. While my argumentation skills have much to get improved, I
+naturaly had the courage the courage to challenge a solution that I knew would
+burden the team with unnecessary stress and useless work, ultimately escalating
+costs for the company. Standing up allowed us to collectively deliver a
+successful outcome.
 
-There was also my first proof that I do not have such high microservice
-obsession. Before this project, I had always worked on environments where
-careful service extraction from monoliths could bring benifits. I like
-simplicity and small services can help to reduce the local complexity. However,
-here I was sure I could balance pros and cons. Microservice is costly
-architectural style and it only gets more costly when principles are hardly
-broken and without a proper infrastructure.
+Moreover, this project marked my realization that my enthusiasm for
+microservices isn't an all obsession. Prior to this project, I had primarily
+operated in environments where careful extracting services from monoliths
+brought substantial benefits. However, here, I proved to myself the importance
+of striking a balance between the advantages and disadvantages of any decision.
 
-It was my first opportunity to create impact without coding. I did code, but the
-real impact was on the discussion, planning, and writing the Architectural
-Decision Record with pros and cons of the chosen solution. This was a crucial
-milestone to my career goal of pursueing technical path.
+This project also presented the first clear opportunity to make an impact beyond
+coding. While I did also code a bit, but the real impact came from challenging,
+discussion, assessment, and decision. This milestone is aligned with my career
+goals.
 
-The most important learning came only much later that I just realized almost two
-years after the project completion. My contribution had a meaningful impact only
-because:
+Lastly and the most importantly learning emerged almost two years after the
+project's completion. I realized that my contribution could only hold
+significant weight because of:
 
-1. My teammates were pretty open to listening to a very fresh new comer that had
-   much less overall context than they did.
+1. My teammates openness to listening to a fresh newcomer with far less overall
+   context than they possessed.
 2. Management full trust and support.
 
-I am greatly thankful to all my mates at that time. They enabled me in such a
-way I could not understand at the time.
+I am immensely grateful to all my teammates during that period. Their openness
+and support enabled me in ways I couldn't fully comprehend at the time.
 
-Following it, I gotta also watch out myself to **never push others back**.
+Moving forward, I gotta watch out myself to **never push others back**.
 
