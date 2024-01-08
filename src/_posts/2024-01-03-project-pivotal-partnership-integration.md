@@ -5,14 +5,13 @@ permalink: /:title
 title: Pivotal Partnership Integration
 image: ACL
 excerpt:
-   How I quickly got onboarded onto a pivotal project and helped the team to
-   make an crucial architectural decision, enabling its delivery in half of the
-   initial estimated time by leveraging the existing CQS design and correctly
-   applying simple Domain-Driven Design and Hexagonal Architecture principles.
+   How I quickly got onboarded onto a pivotal project and led the team to make a
+   crucial architectural decision, enabling its delivery in half of the initial
+   estimated time by leveraging the existing CQS design and correctly applying
+   simple Domain-Driven Design and Hexagonal Architecture principles.
 ---
 
 ## TL;DR
-
 
 {{ page.excerpt }}
 
