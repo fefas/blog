@@ -9,6 +9,9 @@ excerpt:
    crucial architectural decision, enabling its delivery in half of the initial
    estimated time by leveraging the existing CQS design and correctly applying
    simple Domain-Driven Design and Hexagonal Architecture principles.
+
+mediumId: pivotal-partnership-integration-3d2709076fa1
+devtoId: pivotal-partnership-integration-3l4g
 ---
 
 ## TL;DR
