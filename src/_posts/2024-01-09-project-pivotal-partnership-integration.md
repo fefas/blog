@@ -31,8 +31,8 @@ remarkably high.
 Given its extensive presence and renowned brand in the e-commerce market, the
 partnership not only promised immediate access to a vast customer base but also
 aimed to associate the company's maturing financing product with a trusted
-brand. Failure would have been catastrophic as such an opportunity with a major
-partner was a once-in-a-lifetime chance for a startup.
+brand. A failure would have been catastrophic as such an opportunity with a
+major partner was a once-in-a-lifetime chance for a startup.
 
 The project's execution fell under the scope of the "e-commerce integration"
 department, then composed of two product teams with around 8 engineers in total.
@@ -94,16 +94,16 @@ Upon scrutinizing the endpoints demanded by the partner, I noticed an important
 detail: all use cases behind each required endpoint were already implemented in
 one existing service. This service held many responsibilities, being one of them
 the direct integration with common e-commerce checkout solutions, such as
-Magento. There was only one use case that was previously unnecessary to the
-directly integrated e-commerce platforms but was required for this project.
-Since its logic was also closely related to e-commerce integration, it would fit
-well in this same service.
+Magento. There was only one use case previously unnecessary to the directly
+integrated e-commerce platforms but required for this project.  Since its logic
+was also closely related to e-commerce integration, it would fit well in this
+same service.
 
 Within my second week at the company, I presented my takes to the team:
 
 1. Creating a new service for this project seemed unnecessary as there wasn't a
-   meaningful bounded context justifying such a segregated codebase and
-   deployment isolation.
+   meaningful bounded context justifying such segregated codebase and deployment
+   isolation.
 
    The existing service responsible for e-commerce checkout integrations could
    handle everything by simply providing the same use cases via a new port and
@@ -118,12 +118,16 @@ Within my second week at the company, I presented my takes to the team:
    reliability by introducing another potential failure point, hurting our SLA
    agreement.
 
-   The planned close collaboration with our partner on the activation of new
-   e-commerce integrations would mitigate the urgency for premature
-   optimization.
+   Furthermore, the planned close collaboration with our partner on the
+   activation of new e-commerce integrations would mitigate the urgency for
+   premature optimization.
 
 3. The high complexity associated with setting up the new service would heavily
    drain team resources without commensurate future benefits.
+
+   Additionally, by simply coding into an already running service, the team
+   would focus on smaller releases, allowing shorter feedback cycles and
+   demonstrating progress iteratively.
 
 Following discussions, a consensus was reached and documented. With this simpler
 solution, the implementation scope was streamlined from a new microservice to a
@@ -149,15 +153,14 @@ achievement could pivot the product and company.
 
 After reading this story, you might think: "Yeah, that was the obvious
 solution... not impressed". It was indeed obvious, but not so much for those
-immersed in context and facing problems in the project in the service we ended
-up changing.
+immersed in context and facing problems in the service we ended up changing.
 
 My past experience with microservices combined with relevant technical knowledge
-and argumentation skills has proven key to guiding the team to a architectural
+and argumentation skills has proven key to guiding the team to an architectural
 decision that would really help us instead of causing future frustration.
 
-A second and even more important learning emerged almost two years later was
-that my contribution could only hold significant weight because of:
+A second and even more important learning emerged almost two years later. My
+contribution could only hold significant weight because of:
 
 1. My teammates' openness to listening to a fresh newcomer with far less overall
    context than they possessed.
@@ -171,7 +174,7 @@ Moving forward, I gotta watch myself to **never push others back**.
 ## Personal Taken
 
 > The next statements are probably irrelevant to most of the audience, but this
-> is still a blog.
+> is still a blog :)
 
 I had many personal taken from this project since it is the work from my recent
 career path I am most proud of.
@@ -180,7 +183,7 @@ I do believe I nailed this one. While I still gotta much to improve on my
 argumentation skills, I naturally had the courage to challenge a solution that I
 knew would burden the team with unnecessary stress and useless work, ultimately
 escalating costs for the company. Standing up allowed us to collectively deliver
-a successful outcome.
+a successful outcome with considerably less effort.
 
 Moreover, this project marked my realization that my enthusiasm for
 microservices isn't an all obsession. Prior to this project, I had primarily
