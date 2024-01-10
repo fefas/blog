@@ -1,9 +1,9 @@
 ---
 layout: post
-permalink: /:title
+permalink: /projects/:title
 
 title: Pivotal Partnership Integration
-image: ACL
+image: Contribution
 excerpt:
    How I quickly got onboarded onto a pivotal project and led the team to make a
    crucial architectural decision, enabling its delivery in half of the initial
@@ -21,7 +21,7 @@ Integrate the company’s financing product as a payment option within e-commerc
 checkouts through a partnership with a well-established brand that already holds
 a widespread presence across numerous online stores.
 
-{{ 'Goal' | post_image }}
+{{ 'Project' | post_image }}
 
 ## Context
 
@@ -134,7 +134,7 @@ solution, the implementation scope was streamlined from a new microservice to a
 collection of controllers contained in a designated module for this new client
 type, alongside a table to map inner-vs-outer data and other minor changes.
 
-{{ 'My Solution' | post_image }}
+{{ 'Contribution' | post_image }}
 
 ## Result
 
@@ -171,7 +171,7 @@ and support enabled me in ways I couldn't fully comprehend at the time.
 
 Moving forward, I gotta watch myself to **never push others back**.
 
-## Personal Taken
+## Takeaways
 
 > The next statements are probably irrelevant to most of the audience, but this
 > is still a blog :)
