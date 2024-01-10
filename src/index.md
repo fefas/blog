@@ -24,5 +24,7 @@ You can find me on
 ## Posts
 
 {% for post in site.posts %}
+  {% if post.hidden != true %}
   * [{{ post.title }}]({{ post.url }}) <span class="post-date">{{ post.date | date: '%Y %b %d' }}</span>
+  {% endif %}
 {% endfor %}
