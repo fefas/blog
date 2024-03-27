@@ -11,7 +11,7 @@ function initDarkMode() {
     var systemDarkModeEnabled =
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (systemDarkModeEnabled) toggleDarkMode();
+    //if (systemDarkModeEnabled) toggleDarkMode();
 }
 
 function filterPosts(tag) {
