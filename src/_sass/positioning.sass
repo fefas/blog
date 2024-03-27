@@ -1,0 +1,39 @@
+$no-margin: 0
+$no-padding: 0
+$to-center: 0 auto
+
+$wrapper-max-width: 770px
+$wrapper-padding: 1 * $font-size 2 * $font-size
+
+$footer-margin-top: 2 * $font-size
+$footer-padding-bottom: 2 * $font-size
+$footer-text-align: center
+
+body
+  margin: $no-margin
+  padding: $no-padding
+
+.wrapper
+  max-width: $wrapper-max-width
+  margin: $to-center
+  padding: $wrapper-padding
+
+nav
+  padding: $font-size 0 calc($font-size / 2) 0
+
+  a:not(:first-child)
+    margin-left: $font-size
+    float: right
+
+footer
+  margin-top: $footer-margin-top
+  padding-bottom: $footer-padding-bottom
+  text-align: $footer-text-align
+  p
+    margin: $no-margin
+
+img
+  display: block
+  margin: auto
+  max-width: 100%
+

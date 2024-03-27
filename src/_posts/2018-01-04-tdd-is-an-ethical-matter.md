@@ -4,17 +4,24 @@ permalink: /:title
 
 title: TDD is an ethical matter
 image: Scream
-excerpt: "Some months ago I gave my first talk: An Introduction to TDD"
 
 mediumId: tdd-is-an-ethical-matter-17b8ae415fb2
 devtoId: tdd-is-an-ethical-matter-19h4
+
+tags: CleanCode Craftsmanship TDD
 ---
+
+I finally gave my first talk: "An Introduction to TDD"! At the end, what
+surprised me weren’t the good questions, rather some who claimed that TDD is an
+unreachable ideal and just a philosophical subject.
+
+<!--excerpt-->
 
 ## My first talk
 
 Some months ago I gave my first talk: "An Introduction to TDD". I started it
-telling about my personal motivation of adopting this practice daily. Therefor I
-cited how the development process is a waste of time when we don't have
+telling about my personal motivation of adopting this practice daily. Therefore,
+I cited how the development process can waste a lot of time when we don't have
 something helping us to focus on the requirements or guiding us to the next
 step. I cited also how developers put too much effort trying to predict all
 possibles scenarios from inside to outside.
@@ -126,3 +133,4 @@ Here are great books to read:
   Craftsmanship](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
 
 Thanks and let's test first!
+

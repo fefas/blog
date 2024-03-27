@@ -1,18 +1,19 @@
-{% if page.url != '/' %}
 <nav>
-  <a href="/">&lt;&lt; Home</a>
-  <a href="https://twitter.com/share">Tweet it</a>
+  {% if layout.is_post %}
+    <a href="/">&lt;&lt; Home</a>
 
-  {% if page.mediumId %}
-  <a
-    target="_blank"
-    href="{{ site.author.links.medium }}/{{ page.mediumId }}">Read on Medium</a>
-  {% endif %}
+    {% if page.mediumId %}
+    <a
+      target="_blank"
+      href="{{ site.author.links.medium }}/{{ page.mediumId }}">Read on Medium</a>
+    {% endif %}
 
-  {% if page.devtoId %}
-  <a
-    target="_blank"
-    href="{{ site.author.links.devto }}/{{ page.devtoId }}">Read on Dev.to</a>
+    {% if page.devtoId %}
+    <a
+      target="_blank"
+      href="{{ site.author.links.devto }}/{{ page.devtoId }}">Read on Dev.to</a>
+    {% endif %}
+  {% else %}
+    Felipe Martins <span class="subtle-text">on software engineering.</span>
   {% endif %}
 </nav>
-{% endif %}

@@ -6,15 +6,15 @@
 
     <meta name="author" content="{{ site.author.name }}">
     <meta name="reply-to" content="{{ site.author.email }}">
-    <meta name="keywords" content="{{ site.author.name }},{{ site.author.nickname }}">
+    <meta name="keywords" content="{{ site.author.name }}">
 
     {% include social-meta-tags.html %}
-
-    <title>{{ page.title }}</title>
 
     <link rel="icon" type="image/png" href="{{ 'favicon.png' | image_url }}">
     <link rel="stylesheet" type="text/css" href="{{ 'styles.css' | asset_url }}">
     <script src="{{ 'script.js' | asset_url }}"></script>
+
+    <title>{{ page.title }}</title>
 
     {% include google-analytics-script.html %}
   </head>
@@ -25,7 +25,10 @@
 
       <main>{{ content }}</main>
 
-      {% include footer.html %}
+      <footer>
+        <p>This content is licensed under a <a href="{{ site.contentLicense }}">CC BY-SA 4.0</a></p>
+        <p><a href="{{ site.sourceCode }}">:wq</a></p>
+      </footer>
     </div>
   {% include body-script.html %}
   </body>

@@ -4,12 +4,11 @@ permalink: /:title
 
 title: What should a developer really catch?
 image: Total Mess
-excerpt:
-  In my first post I would like to write about something that isn't found so
-  often on the internet and most ~~experienced~~ developers are missing.
 
 mediumId: what-should-a-developer-really-catch-dbd250233a9e
 devtoId: what-should-a-developer-really-catch-1a6j
+
+tags: Craftsmanship
 ---
 
 In my first post I would like to write about something that isn't found so often
@@ -20,6 +19,8 @@ professionalism... that is my guess.
 
 First of all, I would like to say that this post is both something I have to
 vent out and a self-critique.
+
+<!--excerpt-->
 
 ## What are we, developers?
 

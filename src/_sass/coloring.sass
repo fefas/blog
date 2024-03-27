@@ -1,0 +1,96 @@
+$background-color: #FFF
+$dark-background-color: #222
+
+$font-color: #333
+$font-color-subtle: #BBB
+$dark-font-color: #BBB
+$dark-font-color-subtle: #666
+
+$link-font-color: #33c
+$dark-link-font-color: #5087DC
+
+$blockquote-color: #F8F8F8
+$blockquote-font-color: #888
+$blockquote-link-color: #333
+$blockquote-left-border-color: #DDD
+$dark-blockquote-color: #282828
+$dark-blockquote-font-color: #9F9487
+$dark-blockquote-link-color: #C9C3BB
+$dark-blockquote-left-border-color: #393E41
+
+body
+  background-color: $background-color
+  color: $font-color
+
+  nav
+    border-bottom: 1px solid $font-color-subtle
+    a, a:hover, a:visited
+      color: $font-color
+
+  footer
+    color: $font-color-subtle
+    a, a:hover, a:visited
+      color: $font-color-subtle
+
+  .subtle-text, .byline
+    color: $font-color-subtle
+
+  h1 a
+    color: $font-color
+    &:visited
+      color: $font-color
+
+  a
+    color: $link-font-color
+    &:visited
+      color: $link-font-color
+
+  ol.posts li.post
+    .date, .post-tags
+      color: $font-color-subtle
+
+  blockquote, div.highlight
+    background: $blockquote-color
+    color: $blockquote-font-color
+    border-left: 4px solid $blockquote-left-border-color
+    a, a:hover, a:visited
+      color: $font-color
+
+body.dark
+  background-color: $dark-background-color
+  color: $dark-font-color
+
+  nav
+    border-color: $dark-font-color-subtle
+    a, a:hover, a:visited
+      color: $dark-font-color
+
+  footer
+    color: $dark-font-color-subtle
+    a, a:hover, a:visited
+      color: $dark-font-color-subtle
+
+  .subtle-text, .byline
+    color: $dark-font-color-subtle
+
+  h1 a
+    color: $dark-font-color
+    &:visited
+      color: $dark-font-color
+
+  a
+    color: $dark-link-font-color
+    &:visited
+      color: $dark-link-font-color
+
+  ol.posts li.post
+    .date, .post-tags
+      color: $dark-font-color-subtle
+
+  blockquote, div.highlight
+    background: $dark-blockquote-color
+    color: $dark-blockquote-font-color
+    border-color: $dark-blockquote-left-border-color
+    a, a:hover, a:visited
+      color: $dark-font-color
+
