@@ -1,19 +1,15 @@
 <nav>
   {% if layout.is_post %}
     <a href="/">&lt;&lt; Home</a>
-
     {% if page.mediumId %}
-    <a
-      target="_blank"
-      href="{{ site.author.links.medium }}/{{ page.mediumId }}">Read on Medium</a>
+    <a href="{{ site.author.medium }}/{{ page.mediumId }}">medium</a>
     {% endif %}
-
     {% if page.devtoId %}
-    <a
-      target="_blank"
-      href="{{ site.author.links.devto }}/{{ page.devtoId }}">Read on Dev.to</a>
+    <a href="{{ site.author.devto }}/{{ page.devtoId }}">dev.to</a>
     {% endif %}
   {% else %}
     Felipe Martins <span class="subtle-text">on software engineering.</span>
+    <a href="{{ site.author.linkedin }}">linkedin</a>
+    <a href="{{ site.author.github }}">github</a>
   {% endif %}
 </nav>
