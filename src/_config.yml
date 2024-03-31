@@ -20,11 +20,6 @@ defaults:
     type: posts
   values:
     type: article
-- scope:
-    path: ""
-    type: page
-  values:
-    type: website
 
 plugins:
 - jekyll-sitemap

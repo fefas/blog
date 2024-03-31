@@ -1,6 +1,7 @@
 ---
 layout: base
 permalink: /
+type: website
 
 title: Felipe Martins
 excerpt: Felipe Martins on software engineering.
