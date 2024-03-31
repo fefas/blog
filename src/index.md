@@ -1,7 +1,9 @@
 ---
 layout: base
-title: Felipe Martins
 permalink: /
+
+title: Felipe Martins
+excerpt: Felipe Martins on software engineering.
 ---
 
 <ol class="posts">

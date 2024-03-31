@@ -1,5 +1,4 @@
 url: https://blog.fefas.dev
-description: Felipe Martins on software engineering.
 
 timezone: Europe/Berlin
 encoding: UTF-8
@@ -11,16 +10,27 @@ contentLicense: https://creativecommons.org/licenses/by-sa/4.0
 author:
   name: Felipe Martins
   email: mail@fefas.dev
-  linkedin: https://br.linkedin.com/in/fefas
   github: https://github.com/fefas
+  linkedin: https://br.linkedin.com/in/fefas
   devto: https://dev.to/fefas
   medium: https://fefas.medium.com
 
-excerpt_separator: <!--excerpt-->
+defaults:
+- scope:
+    path: ""
+    type: posts
+  values:
+    type: article
+- scope:
+    path: ""
+    type: page
+  values:
+    type: website
 
 plugins:
 - jekyll-sitemap
 - jekyll-feed
 
+excerpt_separator: <!--excerpt-->
 sass:
   style: compressed

@@ -4,11 +4,17 @@
     <meta charset="{{ site.encoding }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="{{ page.excerpt }}">
     <meta name="author" content="{{ site.author.name }}">
     <meta name="reply-to" content="{{ site.author.email }}">
     <meta name="keywords" content="{{ site.author.name }}">
-
-    {% include social-meta-tags.html %}
+    <meta property="og:url" content="{{ site.url }}"/>
+    <meta property="og:type" content="{{ page.type }}"/>
+    <meta property="og:title" content="{{ page.title }}"/>
+    <meta property="og:description" content="{{ page.excerpt | strip_html | stripnewlines }}"/>
+    {% if page.image %}
+    <meta property="og:image" content="{{ page.image | post_image_url | absolute_url }}"/>
+    {% endif %}
 
     <link rel="icon" type="image/png" href="{{ 'favicon.png' | image_url }}">
     <link rel="stylesheet" type="text/css" href="{{ 'styles.css' | asset_url }}">
