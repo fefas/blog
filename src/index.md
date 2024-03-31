@@ -1,30 +1,24 @@
 ---
 layout: base
-title: Felipe Martins fefas
 permalink: /
+type: website
+
+title: Felipe Martins
+excerpt: Felipe Martins on software engineering.
 ---
 
-# {{ site.author.name }} <span class="nickname">{{ site.author.nickname }}</span>
-
-Hello, world! My name is {{ site.author.name }}, aka <span class="nickname"> {{
-site.author.nickname }}</span>. I'm a Clean Coder and TDD evangelist which
-delivers software ASAP (As Simple As Possible).
-
-This web-blog is a space where I share my ideas and experience. I hope this
-content may be useful for you.
-
-You can find me on
-  [github]({{ site.author.links.github }}),
-  [twitter]({{ site.author.links.twitter }}),
-  [stack overflow]({{ site.author.links.stackOverflow }}),
-  [linkedin]({{ site.author.links.linkedin }}),
-  [medium]({{ site.author.links.medium }}) and
-  [dev.to]({{ site.author.links.devto }}).
-
-## Posts
-
+<ol class="posts">
 {% for post in site.posts %}
-  {% if post.hidden != true %}
-  * [{{ post.title }}]({{ post.url }}) <span class="post-date">{{ post.date | date: '%Y %b %d' }}</span>
-  {% endif %}
+  {% if post.hidden == true %}{% continue %}{% endif %}
+
+  <li class="post" data-tags="{{ post.tags | tag_to_string }}">
+    <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+    <span class="byline">
+      {{ post.date | date: '%d %b %Y' }}
+      {% for tag in post.tags %}. <span class="tag" data-tag="{{ tag }}">#{{ tag }}</span>{% endfor %}
+    </span>
+
+    <p class="excerpt">{{ post.excerpt | slice: 3, 140 }} ...</p>
+  </li>
 {% endfor %}
+</ol>

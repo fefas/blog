@@ -4,19 +4,20 @@ permalink: /projects/:title
 
 title: Pivotal Partnership Integration
 image: Contribution
-excerpt:
-   How I quickly got onboarded onto a pivotal project and led the team to make a
-   crucial architectural decision, enabling its delivery in half of the initial
-   estimated time by leveraging the existing CQS design and correctly applying
-   simple Domain-Driven Design and Hexagonal Architecture principles.
 
 mediumId: pivotal-partnership-integration-3d2709076fa1
 devtoId: pivotal-partnership-integration-3l4g
+
+tags: Projects DDD
 ---
 
-## TL;DR
+This is a report of how I quickly got onboarded onto a pivotal project and led
+the team to make an architectural decision which shortened the delivery to the
+half of the initial estimated time by leveraging the existing CQS design and
+applying Domain-Driven Design and Hexagonal Architecture principles to plan a
+simple and efficient solution.
 
-{{ page.excerpt }}
+<!--excerpt-->
 
 ## Project
 

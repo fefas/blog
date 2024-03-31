@@ -4,29 +4,54 @@
     <meta charset="{{ site.encoding }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="{{ page.excerpt }}">
     <meta name="author" content="{{ site.author.name }}">
     <meta name="reply-to" content="{{ site.author.email }}">
-    <meta name="keywords" content="{{ site.author.name }},{{ site.author.nickname }}">
-
-    {% include social-meta-tags.html %}
-
-    <title>{{ page.title }}</title>
+    <meta name="keywords" content="{{ site.author.name }}">
+    <meta property="og:url" content="{{ site.url }}"/>
+    <meta property="og:type" content="{{ page.type }}"/>
+    <meta property="og:title" content="{{ page.title }}"/>
+    <meta property="og:description" content="{{ page.excerpt | strip_html | stripnewlines }}"/>
+    {% if page.image %}
+    <meta property="og:image" content="{{ page.image | post_image_url | absolute_url }}"/>
+    {% endif %}
 
     <link rel="icon" type="image/png" href="{{ 'favicon.png' | image_url }}">
     <link rel="stylesheet" type="text/css" href="{{ 'styles.css' | asset_url }}">
     <script src="{{ 'script.js' | asset_url }}"></script>
 
-    {% include google-analytics-script.html %}
+    <title>{{ page.title }}</title>
   </head>
 
   <body>
     <div class="wrapper">
-      {% include navbar.html %}
+      <nav>
+      {% if layout.is_post %}
+        <a href="/">&lt;&lt; Home</a>
+        {% if page.mediumId %}
+        <a href="{{ site.author.medium }}/{{ page.mediumId }}">medium</a>
+        {% endif %}
+        {% if page.devtoId %}
+        <a href="{{ site.author.devto }}/{{ page.devtoId }}">dev.to</a>
+        {% endif %}
+      {% else %}
+        Felipe Martins <span class="subtle-text">on software engineering.</span>
+        <a href="{{ site.author.linkedin }}">linkedin</a>
+        <a href="{{ site.author.github }}">github</a>
+      {% endif %}
+      </nav>
 
       <main>{{ content }}</main>
 
-      {% include footer.html %}
+      <footer>
+        <p>This content is licensed under a <a href="{{ site.contentLicense }}">CC BY-SA 4.0</a></p>
+        <p><a href="{{ site.sourceCode }}">:wq</a></p>
+      </footer>
     </div>
-  {% include body-script.html %}
+
+    <script type="text/javascript">
+        initDarkMode();
+        initPostListFilter();
+    </script>
   </body>
 </html>

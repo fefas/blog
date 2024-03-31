@@ -4,11 +4,17 @@ permalink: /:title
 
 title: Clean Code, bullshit or common sense?
 image: Washing bunch of dirty dishes
-excerpt: "Bob started to work at a new company..."
 
 mediumId: clean-code-bullshit-or-common-sense-1218b2c1a119
 devtoId: clean-code-bullshit-or-common-sense-3lal
+
+tags: CleanCode Craftsmanship
 ---
+
+How do we constantly end up with terrible such codebases? Is there anyway to
+avoid it? No clear answers so far, but some of root causes may be  easy to spot.
+
+<!--excerpt-->
 
 ## Common story
 

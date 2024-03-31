@@ -1,35 +1,30 @@
 url: https://blog.fefas.dev
-description:
-  Blog of the software developer Felipe Martins, aka fefas, with content that
-  may help others developers to work better.
 
 timezone: Europe/Berlin
 encoding: UTF-8
-googleAnalyticsId: G-DFYZ727543
 
-links:
-  sourceCode: https://github.com/fefas/blog
-  licenses:
-    content: https://creativecommons.org/licenses/by-sa/4.0
-    sourceCode: https://github.com/fefas/blog/blob/master/LICENSE
+sourceCode: https://github.com/fefas/blog
+contentLicense: https://creativecommons.org/licenses/by-sa/4.0
 
 author:
   name: Felipe Martins
-  nickname: fefas
-  twitterNickname: ooofefas
   email: mail@fefas.dev
+  github: https://github.com/fefas
+  linkedin: https://br.linkedin.com/in/fefas
+  devto: https://dev.to/fefas
+  medium: https://fefas.medium.com
 
-  links:
-    github: https://github.com/fefas
-    twitter: https://twitter.com/ooofefas
-    stackOverflow: https://stackoverflow.com/users/4259675/felipe-martins
-    linkedin: https://br.linkedin.com/in/fefas
-    devto: https://dev.to/fefas
-    medium: https://fefas.medium.com
+defaults:
+- scope:
+    path: ""
+    type: posts
+  values:
+    type: article
 
 plugins:
 - jekyll-sitemap
 - jekyll-feed
 
+excerpt_separator: <!--excerpt-->
 sass:
   style: compressed
