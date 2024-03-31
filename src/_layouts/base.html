@@ -21,14 +21,6 @@
     <script src="{{ 'script.js' | asset_url }}"></script>
 
     <title>{{ page.title }}</title>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.googleAnalyticsId }}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ site.googleAnalyticsId }}');
-    </script>
   </head>
 
   <body>
